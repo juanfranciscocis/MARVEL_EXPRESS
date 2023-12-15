@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  link(rel='stylesheet', href='/stylesheets/cuenta.css')
+  nav
+    img#lupa_img_nav.lupa_nav(src='../images/home_page/lupa.png')
+    input#input_search_nav.input_search_nav
+    a(href='personajes')
+      #personajes_nav.personajes_nav PERSONAJES
+    a(href='album')
+      #album_nav.album_nav ALBUMS
+    a(href='mi_album')
+      #mi_album_nav.mi_album_nav MI ALBUM
+    a(href='register')
+      img#cuenta_nav.cuenta_nav(src='../images/home_page/account.png')
+  main(style='display: flex; justify-content: center; align-items: center;')
+    a(href='/')
+      img.logo_main(src='../images/home_page/logoMarvel.png')
+    .container.margen
+      #columnas_personajes(style='display: flex; justify-content: space-around;')
+        .card.text-black.bg-secondary.border-dark.mb-3(style='width: 75%; height: 100%;')
+          .card-header.title AJUSTES DE CUENTA
+          .card-body
+            div(style='display: flex; justify-content: center; align-items: center; flex-direction: column;')
+              img(src=cuenta_page.imagen)
+              h1.card-title #{cuenta_page.nombre}
+              h5.card-title #{cuenta_page.nombreUsuario}
+              h5.card-title #{cuenta_page.correo}
+            br
+            form(action method='post' role='form')
+              .row
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='nombre') Cambiar Nombre
+                      input#nombre.form-control(type='text' placeholder='Cambiar Nombre' value= cuenta_page.nombre name='nombre')
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='apellido') Cambiar Apellido
+                      input#apellido.form-control(type='text' placeholder='Cambiar Apellido' value= cuenta_page.apellido name='apellido')
+              .row
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='usuario') Cambiar Nombre De Usuario
+                      input#usuario.form-control(type='text' placeholder='Cambiar Nombre De Usuario' value= cuenta_page.nombreUsuario name='usuario')
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='telefono') Cambiar Telefono
+                      input#telefono.form-control(type='text' placeholder='Cambiar Telefono' value= cuenta_page.telefono name='telefono')
+              .row
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='email') Cambiar Email
+                      input#email.form-control(type='email' placeholder='Cambiar Email' value= cuenta_page.correo name='email')
+                .col-md-6
+                    .form-group
+                      label.card-subtitle(for='password') Cambiar Clave
+                      input#password.form-control(type='password' placeholder='Cambiar Clave' value= cuenta_page.contrasena name='password')
+              .row
+                .form-group
+                  button.btn.btn-warning.w-100(type='submit') Cambiar Datos
+
+              .row
+                .form-group
+                  a.btn.btn-danger.w-100(type='submit' href='eliminar') Eliminar Cuenta
+                .form-group.display-none
+                  label.card-subtitle.display-none(for='id') ID
+                  input#id.form-control.display-none(type='text' placeholder='ID' value= cuenta_page._id name='id')
